@@ -1,31 +1,34 @@
 package main
 
-import (
-	"fmt"
-	"math"
-)
+import "fmt"
 
-type Rectangle struct {
-	width, height float64
+type Skills []string
+
+type Human struct {
+	name string
+	age  int
+	weight int
 }
 
-type Circle struct {
-	radius float64
+type Student struct {
+	Human  //匿名字段，struct
+	Skills //匿名字段，自定义的类型string slice
+	int    //内置类型作为匿名字段
+	speciality string
 }
 
-func (r Rectangle) area() float64 {
-	return r.height * r.width
-}
-
-func (c Circle) area() float64 {
-	return math.Pow(c.radius, 2) * math.Pi
-}
-
-func main(){
-	r1 := Rectangle{12, 2}
-	c1 := Circle{25}
-
-	fmt.Printf("Area of r1 is:%f\n", r1.area())
-	fmt.Printf("Area of c1 is:%f\n", c1.area())
-
+func main() {
+	//初始化学生Jane
+	jane := Student{Human:Human{"Jane", 35, 100}, speciality:"CS"} //注意格式统一
+	fmt.Printf("Her name is %s\n", jane.Human.name)
+	fmt.Printf("Her age  is %s\n", jane.Human.age)
+	fmt.Printf("Her weight is %s\n", jane.Human.weight)
+	fmt.Printf("Her speciality is %s\n", jane.speciality)
+	//修改skill字段
+	jane.Skills = []string{"anatomy"}
+	jane.Skills = append(jane.Skills, "physics", "golang")
+	fmt.Println("Her skill now is \n", jane.Skills)
+	//修改匿名内置类型字段
+	jane.int = 3
+	fmt.Println("Her preferred number is", jane.int)
 }

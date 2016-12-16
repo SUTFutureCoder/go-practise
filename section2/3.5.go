@@ -15,6 +15,7 @@ func testFile() bool{
 	}
 	b := make([]byte, 10000)
 	n, _ := f.Read(b)
+	//fmt.Printf(string(b[:n]))
 	fmt.Printf(string(b[:n]))
 	return true
 }
