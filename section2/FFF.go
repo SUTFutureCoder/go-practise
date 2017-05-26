@@ -4,7 +4,8 @@ import "fmt"
 
 func main() {
 	FFF := "FFF"
-	for true != false{
-		fmt.Printf("%s\n", FFF);
+	for {
+		go fmt.Printf("%s123\n", FFF);
+		go fmt.Printf("%s456\n", FFF);
 	}
 }
